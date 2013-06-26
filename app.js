@@ -1,3 +1,4 @@
+/*
 var _express = require('express');
 var _app = _express();
 var _url = require('url');
@@ -28,3 +29,16 @@ _app.get('/*', function(req, res){
 _app.listen(_config.info.port);
 
 console.log('listening at ' + _config.info.port);
+*/
+var express = require("express");
+var app = express();
+app.use(express.logger());
+
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+});
+
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
