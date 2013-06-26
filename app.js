@@ -7,7 +7,7 @@ var _mime = require('mime');
 var _config = require('./config');
 
 //The world's most advanced web server code...BEHOLD!
-_app.get('/*', function(req, res){         
+_app.get('/*', function(req, res){       
     var uri = _url.parse(req.url).pathname;             
     var filename = _path.join(process.cwd(), uri);         
     _fs.exists(filename, function(exists){
