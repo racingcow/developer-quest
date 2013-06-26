@@ -1,0 +1,16 @@
+{
+  "name": "developer-quest",
+  "version": "0.0.1",
+  "description": "",
+	"homepage": "https://github.com/racingcow/developer-quest",
+	"bugs": "https://github.com/racingcow/developer-quest/issues",
+    "author": {
+        "name": "David Miller",
+        "email": "racingcow@hotmail.com",
+        "url": "https://github.com/racingcow"
+    },
+    "dependencies": {
+        "express": ">= 3.2.6",
+        "mime": ">= 1.2.9"
+    }
+}
