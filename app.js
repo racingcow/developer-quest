@@ -33,7 +33,7 @@ console.log('listening at ' + _config.info.port);
 var express = require('express');
 var app = express();
 app.use(express.logger());
-app.use(express.static());
+app.use(express.static(__dirname));
 /*
 app.get('/', function(request, response) {
   response.sendfile('index.html');
