@@ -1,0 +1,90 @@
+html,body {
+	background-color: #000;
+	color: #fff;
+	font-family: helvetica, arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 12pt;
+}
+
+#canvas {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	image-rendering: pixelated;
+	image-rendering: -webkit-optimize-contrast;
+	ms-interpolation-mode: nearest-neighbor;
+	-webkit-interpolation-mode: nearest-neighbor;
+}
+
+.button {
+	background-image: url(media/iphone-buttons.png);
+	background-repeat: no-repeat;
+	width: 192px;
+	height: 32px;
+	position: absolute;
+	bottom: 0px;
+}
+
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+-webkit-text-size-adjust: none;
+
+#close{
+
+}
+
+#buttonLeft { 
+	position: absolute; 
+	top: 50%; 
+	left: 10%; 
+	width: 32px;
+	background-position: -32px; 
+	height: 32px;
+	visibility:hidden; 
+} 
+#buttonUp {  position: absolute; 
+	top: 10%; 
+	left: 50%; 
+	width: 32px;
+	background-position: -64px; 
+	height: 32px;
+	visibility:hidden;  }
+#buttonDown { position:absolute; 
+	top:90%;
+	left: 50%; 
+	width: 32px;
+	height: 32px;
+	background-position: -96px; 
+	visibility:hidden; 
+}
+#buttonRight { position:absolute;
+	top:50%;
+	left: 90%; 
+	width: 32px;
+	height: 32px;
+	background-position: 0px; 
+	visibility:hidden;
+}
+#buttonShoot {
+	position:absolute;
+	top:90%;
+	left:10%;
+	width: 32px;
+	height: 32px;
+	background-position: -128px; 
+	visibility:hidden;
+}
+#buttonJump {
+	position:absolute;
+	top:90%;
+	left:90%;
+	width: 32px;
+	height: 32px;
+	background-position: -160px;
+	visibility:hidden; 
+}

@@ -1,138 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<title>Developer Quest</title>
-	<style type="text/css">
-		html,body {
-			background-color: #000;
-			color: #fff;
-			font-family: helvetica, arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			font-size: 12pt;
-		}
-		
-		#canvas {
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-			border: 1px solid #555;
-			image-rendering: optimizeSpeed;
-			-webkit-interpolation-mode: nearest-neighbor;
-
-		}
-		
-		.button {
-			background-image: url(media/iphone-buttons.png);
-			background-repeat: no-repeat;
-			width: 192px;
-			height: 32px;
-			position: absolute;
-			bottom: 0px;
-			}
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-webkit-tap-highlight-color: rgba(0,0,0,0);
-			-webkit-text-size-adjust: none;
-
-			#close{}
-
-			#buttonLeft { 
-						 position: absolute; 
-						 top: 50%; 
-						 left: 10%; 
-						 width: 32px;
-						 background-position: -32px; 
-						 height: 32px;
-						  visibility:hidden; 
-						} 
-			#buttonUp {  position: absolute; 
-						 top: 10%; 
-						 left: 50%; 
-						 width: 32px;
-						 background-position: -64px; 
-						 height: 32px;
-						  visibility:hidden;  }
-			#buttonDown { position:absolute; 
-						  top:90%;
-						  left: 50%; 
-						  width: 32px;
-						  height: 32px;
-						  background-position: -96px; 
-						  visibility:hidden; 
-						  }
-			#buttonRight { position:absolute;
-						   top:50%;
-						   left: 90%; 
-						   width: 32px;
-						   height: 32px;
-						   background-position: 0px; 
-						   visibility:hidden;
-						   }
-			#buttonShoot { position:absolute;
-						   top:90%;
-						   left:10%;
-						   width: 32px;
-						   height: 32px;
-						   background-position: -128px; 
-						   visibility:hidden;
-						   }
-			#buttonJump {  position:absolute;
-						   top:90%;
-						   left:90%;
-						   width: 32px;
-						   height: 32px;
-						   background-position: -160px;
-						   visibility:hidden; 
-						   }
-
-	</style>
-
-	<!--
-	<script type='text/javascript' src="game.min.js"></script>
-	-->
-	<script type="text/javascript" src="lib/impact/impact.js"></script>
-	<script type="text/javascript" src="lib/game/main.js"></script>
-	<script type="text/javascript">
-	<!--//test if it is a mobile device-->
-	var isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i) ? true : false;
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i) ? true : false;
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
-    }
-	};
-
-	function mobileButtons(){
-		<!-- show the mobile buttons -->
-		if(isMobile.any()){
-		document.getElementById('buttonLeft').style.visibility = 'visible';
-		document.getElementById('buttonRight').style.visibility = 'visible';
-		document.getElementById('buttonUp').style.visibility = 'visible';
-		document.getElementById('buttonDown').style.visibility = 'visible';
-		document.getElementById('buttonShoot').style.visibility = 'visible';
-		document.getElementById('buttonJump').style.visibility = 'visible';
-		}
-	};
-	</script>
+	<title>Developer Quest</title>	
+	<link href="theme.css" rel="stylesheet" type="text/css">	
 </head>
-<body onLoad='mobileButtons()'>
-	
-		<div id="game">
+<body onLoad='mobileButtons()'>	
+	<div id="game">
 		<canvas id="canvas"></canvas>
 		<div class="button" id="buttonLeft"></div>
 		<div class="button" id="buttonRight"></div>
@@ -140,6 +13,42 @@
 		<div class="button" id="buttonDown"></div>
 		<div class="button" id="buttonShoot"></div>
 		<div class="button" id="buttonJump"></div>
-	</div>
+	</div>	
+	<script src="lib/impact/impact.js" type="text/javascript"></script>
+	<script src="lib/game/main.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		
+		<!--//test if it is a mobile device-->
+		var isMobile = {
+		    Android: function() {
+		        return navigator.userAgent.match(/Android/i) ? true : false;
+		    },
+		    BlackBerry: function() {
+		        return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+		    },
+		    iOS: function() {
+		        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+		    },
+		    Windows: function() {
+		        return navigator.userAgent.match(/IEMobile/i) ? true : false;
+		    },
+		    any: function() {
+		        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+		    }
+		};
+
+		function mobileButtons(){
+			<!-- show the mobile buttons -->
+			if(isMobile.any()){
+				document.getElementById('buttonLeft').style.visibility = 'visible';
+				document.getElementById('buttonRight').style.visibility = 'visible';
+				document.getElementById('buttonUp').style.visibility = 'visible';
+				document.getElementById('buttonDown').style.visibility = 'visible';
+				document.getElementById('buttonShoot').style.visibility = 'visible';
+				document.getElementById('buttonJump').style.visibility = 'visible';
+			}
+		};
+
+	</script>	
 </body>
 </html>
