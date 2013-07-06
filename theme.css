@@ -27,6 +27,7 @@ html,body {
 	height: 32px;
 	position: absolute;
 	bottom: 0px;
+	display: none;
 }
 
 -webkit-touch-callout: none;
