@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>Developer Quest</title>	
-	<link href="theme.css" rel="stylesheet" type="text/css">	
+	<link href="theme.css" rel="stylesheet" type="text/css">
+	<!-- modernizr is recommended to be loaded in head http://modernizr.com/docs/#installing -->
+	<script src="lib/modernizr/modernizr.js" type="text/javascript"></script>
 </head>
-<body onLoad='mobileButtons()'>	
+<body>	
 	<div id="game">
 		<canvas id="canvas"></canvas>
 		<div class="button" id="buttonLeft"></div>
@@ -13,42 +15,12 @@
 		<div class="button" id="buttonDown"></div>
 		<div class="button" id="buttonShoot"></div>
 		<div class="button" id="buttonJump"></div>
-	</div>	
+	</div>		
+	<script src="lib/jQuery/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script src="lib/impact/impact.js" type="text/javascript"></script>
 	<script src="lib/game/main.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		
-		<!--//test if it is a mobile device-->
-		var isMobile = {
-		    Android: function() {
-		        return navigator.userAgent.match(/Android/i) ? true : false;
-		    },
-		    BlackBerry: function() {
-		        return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-		    },
-		    iOS: function() {
-		        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
-		    },
-		    Windows: function() {
-		        return navigator.userAgent.match(/IEMobile/i) ? true : false;
-		    },
-		    any: function() {
-		        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
-		    }
-		};
-
-		function mobileButtons(){
-			<!-- show the mobile buttons -->
-			if(isMobile.any()){
-				document.getElementById('buttonLeft').style.visibility = 'visible';
-				document.getElementById('buttonRight').style.visibility = 'visible';
-				document.getElementById('buttonUp').style.visibility = 'visible';
-				document.getElementById('buttonDown').style.visibility = 'visible';
-				document.getElementById('buttonShoot').style.visibility = 'visible';
-				document.getElementById('buttonJump').style.visibility = 'visible';
-			}
-		};
-
+		Modernizr.load({ test: Modernizr.touch, nope: 'script/mobile-buttons.js' });
 	</script>	
 </body>
 </html>
