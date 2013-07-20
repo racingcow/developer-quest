@@ -4,7 +4,7 @@
 	<title>Developer Quest</title>	
 	<link href="theme.css" rel="stylesheet" type="text/css">
 	<!-- modernizr is recommended to be loaded in head http://modernizr.com/docs/#installing -->
-	<script src="lib/modernizr/modernizr.js" type="text/javascript"></script>
+	<script src="script/modernizr.js" type="text/javascript"></script>	
 </head>
 <body>	
 	<div id="game">
@@ -16,11 +16,12 @@
 		<div class="button" id="buttonShoot"></div>
 		<div class="button" id="buttonJump"></div>
 	</div>		
-	<script src="lib/jQuery/jquery-1.10.2.min.js" type="text/javascript"></script>
-	<script src="lib/impact/impact.js" type="text/javascript"></script>
+	<script src="script/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="script/pathfinding.js" type="text/javascript"></script>
+	<script src="lib/impact/impact.js" type="text/javascript"></script>	
 	<script src="lib/game/main.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		Modernizr.load({ test: Modernizr.touch, nope: 'script/mobile-buttons.js' });
+		Modernizr.load({ test: Modernizr.touch, yep: 'script/mobile-buttons.js' });
 	</script>	
 </body>
 </html>
