@@ -23,6 +23,11 @@ module.exports = function(grunt) {
 				files: [
 					{src: ['Procfile'], dest: '<%= pkg.paths.publishDir %>'}
 				]
+			},
+			media: {
+				files: [
+					{expand: true, src: ['media/**/*.{png,jpg}'], dest: '<%= pkg.paths.publishDir %>'}
+				]
 			}
 		},
 		cssmin: {
