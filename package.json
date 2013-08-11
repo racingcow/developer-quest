@@ -1,26 +1,30 @@
 {
-	"name": "developer-quest",
-	"version": "0.0.1",
-	"description": "",
-	"homepage": "https://github.com/racingcow/developer-quest",
-	"bugs": "https://github.com/racingcow/developer-quest/issues",
-	"author": {
-		"name": "David Miller",
-		"email": "racingcow@hotmail.com",
-		"url": "https://github.com/racingcow"
-	},
-	"paths": {
-		"php": "c:/Program Files (x86)/PHP/v5.4/php.exe",
-		"bake": "tools/bake.php",
-		"game": "lib/devquest/main.js",
-		"publish": "../developer-quest-publish/devquest.min.js"
-	},
-	"dependencies": {
-		"express": ">= 3.2.6",
-		"mime": ">= 1.2.9"
-	},
-	"devDependencies": {
-		"grunt": "~0.4.1",
-		"grunt-exec": "~0.4.2"
-	}
+  "name": "developer-quest",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/racingcow/developer-quest",
+  "bugs": "https://github.com/racingcow/developer-quest/issues",
+  "author": {
+    "name": "David Miller",
+    "email": "racingcow@hotmail.com",
+    "url": "https://github.com/racingcow"
+  },
+  "paths": {
+    "php": "c:/Program Files (x86)/PHP/v5.4/php.exe",
+    "bake": "tools/bake.php",
+    "game": "lib/devquest/main.js",
+    "publishDir": "../developer-quest-publish/",
+    "publishFile": "devquest.js"
+  },
+  "dependencies": {
+    "express": ">= 3.2.6",
+    "mime": ">= 1.2.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-exec": "~0.4.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-contrib-htmlmin": "~0.1.3"
+  }
 }
