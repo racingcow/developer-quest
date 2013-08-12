@@ -85,9 +85,9 @@ class Baker {
 		$code = file_get_contents( $path );
 		$this->bytesIn += strlen($code);
 		$this->fileCount++;
-		if( $this->format & self::MINIFIED ) {
-			$code = trim(JSMin::minify($code));
-		}
+		//if( $this->format & self::MINIFIED ) {
+		//	$code = trim(JSMin::minify($code));
+		//}
 		
 		
 		// Naively probe the file for 'ig.module().requires().defines()' code;
