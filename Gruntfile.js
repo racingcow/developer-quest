@@ -91,14 +91,27 @@ module.exports = function(grunt) {
 
 	grunt.config.set('leadingIndent.indentation', 'tabs');
 	grunt.config.set('leadingIndent.jsFiles', {
-	    src : ['lib/devquest/**/*.js']
+		src : [
+			'lib/devquest/**/*.js',
+			'app.js',
+			'config.js',
+			'Gruntfile.js',
+			'mobile-buttons.js'
+		]
 	});
 	grunt.config.set('leadingIndent.cssFiles', {
-	    src : ['theme.css']
+		src : ['*.css']
+	});
+	grunt.config.set('leadingIndent.htmlFiles', {
+		src : ['*.html']
 	});
 
 	grunt.registerTask('cleanup', ['clean:pubDir']);
-	grunt.registerTask('checkStyle', ['leadingIndent:jsFiles', 'leadingIndent:cssFiles']);
+	grunt.registerTask('checkStyle', [
+		'leadingIndent:jsFiles', 
+		'leadingIndent:cssFiles',
+		'leadingIndent:htmlFiles'
+	]);
 	grunt.registerTask('build', [
 		'checkStyle',
 		'cleanup',
