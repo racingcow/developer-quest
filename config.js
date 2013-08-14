@@ -1,4 +1,4 @@
-info = {    
-    port: 8081
+info = {
+	port: 8081
 };
 exports.info = info;
