@@ -2,12 +2,23 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		exec: {
-			removeDeployDir: {
-				cmd: 'if exist "<%= pkg.paths.publishDir %>" rd /s /q "<%= pkg.paths.publishDir %>"'
+		clean: {
+			options: {
+				force: true
 			},
-			makeDeployDir: {
-				cmd: 'md "<%= pkg.paths.publishDir %>"'
+			pubDir: {
+				files: [{
+					//BE VERY CAREFUL WHEN CHANGING THIS PATH IF options:force IS SET TO TRUE ABOVE
+					src: ['<%= pkg.paths.publishDir %>']
+				}]
+			},
+			intermediateBuildArtifacts: {
+				files: [{
+					src: [
+						'<%= pkg.paths.publishDir %>/lib',
+						'<%= pkg.paths.publishDir %>/tools'
+					]
+				}]
 			}
 		},
 		copy: {
@@ -49,36 +60,44 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
-			options: {
-				compress: false,
-				mangle: true,
-				beautify: false
-			},
-			minify: {
+			minifyEachSource: {
+				options: {
+					mangle: true,
+					compress: false,
+					preserveComments: false
+				},
 				files: [{
 					expand: true,
 					src: ['lib/**/*.js'],
 					dest: '<%= pkg.paths.publishDir %>'
 				}]
 			}
+		},
+		exec: {
+			bake: {
+				cwd: '<%= pkg.paths.publishDir %>',
+				cmd: '"<%= pkg.paths.php %>" <%= pkg.paths.bake %> <%= pkg.paths.impact %> <%= pkg.paths.game %> <%= pkg.paths.publishFile %>'
+			}
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	grunt.registerTask('bake', 'bake', function() {
-		grunt.log.writeln('-----------------------------------------------------------');
-		grunt.config('exec.removeDeployDir.cmd', 'dir');
-		grunt.config('exec.makeDeployDir.cmd', 'dir');
-		grunt.config('exec.bake.cwd', '<%= pkg.paths.publishDir %>');
-		grunt.config('exec.bake.cmd', '"<%= pkg.paths.php %>" <%= pkg.paths.bake %> <%= pkg.paths.impact %> <%= pkg.paths.game %> <%= pkg.paths.publishFile %>');
-		grunt.task.run('exec');
-	});
-
-	grunt.registerTask('default', ['exec', 'copy', 'cssmin', 'htmlmin', 'uglify', 'bake']);
+	grunt.registerTask('cleanup', ['clean:pubDir']);
+	grunt.registerTask('build', [
+		'clean:pubDir',
+		'copy',
+		'cssmin',
+		'htmlmin',
+		'uglify:minifyEachSource',
+		'exec:bake',
+		'clean:intermediateBuildArtifacts'
+	]);
+	grunt.registerTask('default', ['build']);
 
 };
