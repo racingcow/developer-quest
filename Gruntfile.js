@@ -87,10 +87,21 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-leading-indent');
+
+	grunt.config.set('leadingIndent.indentation', 'tabs');
+	grunt.config.set('leadingIndent.jsFiles', {
+	    src : ['lib/devquest/**/*.js']
+	});
+	grunt.config.set('leadingIndent.cssFiles', {
+	    src : ['theme.css']
+	});
 
 	grunt.registerTask('cleanup', ['clean:pubDir']);
+	grunt.registerTask('checkStyle', ['leadingIndent:jsFiles', 'leadingIndent:cssFiles']);
 	grunt.registerTask('build', [
-		'clean:pubDir',
+		'checkStyle',
+		'cleanup',
 		'copy',
 		'cssmin',
 		'htmlmin',
