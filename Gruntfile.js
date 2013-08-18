@@ -9,14 +9,22 @@ module.exports = function(grunt) {
 			pubDir: {
 				files: [{
 					//BE VERY CAREFUL WHEN CHANGING THIS PATH IF options:force IS SET TO TRUE ABOVE
-					src: ['<%= pkg.paths.publishDir %>']
+					src: [
+						'<%= pkg.paths.publishDir %>/lib',
+						'<%= pkg.paths.publishDir %>/media',
+						'<%= pkg.paths.publishDir %>/*'
+					]
 				}]
 			},
 			intermediateBuildArtifacts: {
 				files: [{
 					src: [
-						'<%= pkg.paths.publishDir %>/lib',
-						'<%= pkg.paths.publishDir %>/tools'
+						'<%= pkg.paths.publishDir %>lib/devquest',
+						'<%= pkg.paths.publishDir %>lib/impact/*.js',
+						'<%= pkg.paths.publishDir %>lib/plugins',
+						'<%= pkg.paths.publishDir %>lib/plusplus',
+						'<%= pkg.paths.publishDir %>lib/weltmeister',
+						'<%= pkg.paths.publishDir %>tools'
 					]
 				}]
 			}
@@ -29,7 +37,7 @@ module.exports = function(grunt) {
 			},
 			heroku: {
 				files: [
-					{src: ['Procfile'], dest: '<%= pkg.paths.publishDir %>'}
+					{src: ['Procfile', 'package.json'], dest: '<%= pkg.paths.publishDir %>'}
 				]
 			},
 			media: {
@@ -40,6 +48,11 @@ module.exports = function(grunt) {
 			tools: {
 				files: [
 					{expand: true, src: ['tools/**/*'], dest: '<%= pkg.paths.publishDir %>'}
+				]
+			},
+			debug: {
+				files: [
+					{expand: true, src: ['lib/impact/debug/**/*'], dest: '<%= pkg.paths.publishDir %>'}
 				]
 			}
 		},
