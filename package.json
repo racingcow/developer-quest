@@ -14,7 +14,9 @@
     "bake": "tools/bake.php",
     "impact": "lib/impact/impact.js",
     "game": "lib/devquest/main.js",
+    "devQuestDir": "../developer-quest/",
     "publishDir": "../developer-quest-publish/",
+    "impactplusplusDir": "../impactplusplus/",
     "publishFile": "devquest.js"
   },
   "dependencies": {
