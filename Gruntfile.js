@@ -54,6 +54,18 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, src: ['lib/impact/debug/**/*'], dest: '<%= pkg.paths.publishDir %>'}
 				]
+			},
+			impactplusplus: {
+				files: [{
+						cwd: '<%= pkg.paths.impactplusplusDir %>',
+						expand: true, 
+						src: [
+							'lib/plusplus/**/*',
+							'media/**/*',
+							'!lib/plusplus/config-user.js'
+						],
+						dest: '<%= pkg.paths.devQuestDir %>'
+					}]
 			}
 		},
 		cssmin: {
@@ -134,6 +146,9 @@ module.exports = function(grunt) {
 		'uglify:minifyEachSource',
 		'exec:bake',
 		'clean:intermediateBuildArtifacts'
+	]);
+	grunt.registerTask('update-impactplusplus', [
+		'copy:impactplusplus'
 	]);
 	grunt.registerTask('default', ['build']);
 
