@@ -16,7 +16,7 @@
     "game": "lib/devquest/main.js",
     "devQuestDir": "../developer-quest/",
     "publishDir": "../developer-quest-publish/",
-    "impactplusplusDir": "../racingcow/impactplusplus/",
+    "impactplusplusDir": "../impactplusplus/",
     "publishFile": "devquest.js"
   },
   "dependencies": {
