@@ -16,8 +16,9 @@
     "game": "lib/devquest/main.js",
     "devQuestDir": "../developer-quest/",
     "publishDir": "../developer-quest-publish/",
-    "impactplusplusDir": "../impactplusplus/",
-    "publishFile": "devquest.js"
+    "impactplusplusDir": "../racingcow/impactplusplus/",
+    "publishFile": "devquest.js",
+    "supercolliderDir": "examples/supercollider/"
   },
   "dependencies": {
     "express": ">= 3.2.6",

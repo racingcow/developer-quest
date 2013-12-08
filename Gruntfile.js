@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		// use -no-write option to test results on clean
 		clean: {
 			options: {
 				force: true
@@ -25,6 +26,20 @@ module.exports = function(grunt) {
 						'<%= pkg.paths.publishDir %>lib/plusplus',
 						'<%= pkg.paths.publishDir %>lib/weltmeister',
 						'<%= pkg.paths.publishDir %>tools'
+					]
+				}]
+			},
+			supercollider: {
+				files: [{
+					src: [
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/plusplus/**/*',
+						'!<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/plusplus/config-user.js',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/weltmeister/**/*',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/weltmeister/',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/impact/**/*',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>lib/impact/',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>weltmeister.html',
+						'<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>theme.css'
 					]
 				}]
 			}
@@ -57,15 +72,40 @@ module.exports = function(grunt) {
 			},
 			impactplusplus: {
 				files: [{
+					cwd: '<%= pkg.paths.impactplusplusDir %>',
+					expand: true, 
+					src: [
+						'lib/plusplus/**/*',
+						'media/**/*',
+						'!lib/plusplus/config-user.js'
+					],
+					dest: '<%= pkg.paths.devQuestDir %>'
+				}]
+			},
+			supercollider: {
+				files: [
+					{
+						// it is usually easiest to set cwd to the root of where you are copying from, and then make everything else relative to that
+						// cwd doesn't seem to apply to dest
 						cwd: '<%= pkg.paths.impactplusplusDir %>',
 						expand: true, 
 						src: [
 							'lib/plusplus/**/*',
-							'media/**/*',
 							'!lib/plusplus/config-user.js'
 						],
-						dest: '<%= pkg.paths.devQuestDir %>'
-					}]
+						dest: '<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>'
+					},
+					{
+						expand: true, 
+						src: [
+							'lib/impact/**/*',
+							'lib/weltmeister/**/*',
+							'weltmeister.html',
+							'theme.css',
+						],
+						dest: '<%= pkg.paths.impactplusplusDir %><%= pkg.paths.supercolliderDir %>'
+					}
+				]
 			}
 		},
 		cssmin: {
@@ -149,6 +189,14 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('update-impactplusplus', [
 		'copy:impactplusplus'
+	]);
+	// copies the appropriate files to the supercollider demo so that it can run
+	grunt.registerTask('supercollider-setup', [
+		'copy:supercollider'
+	]);
+	// removes the files copied during setup so that the supercollider demo can be cleanly sent in PRs
+	grunt.registerTask('supercollider-teardown', [
+		'clean:supercollider'
 	]);
 	grunt.registerTask('default', ['build']);
 
