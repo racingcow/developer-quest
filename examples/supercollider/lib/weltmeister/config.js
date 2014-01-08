@@ -15,13 +15,12 @@ wm.config = {
 		// you can specify an array here. E.g.:
 		// 'entityFiles': ['lib/game/powerups/*.js', 'lib/game/entities/*.js']
 		'entityFiles': [
-            'lib/devquest/entities/*.js',
-            'lib/devquest/players/*.js',
-			'lib/plusplus/entities/*.js'
+			'lib/plusplus/entities/*.js',
+			'lib/game/entities/*.js'
 		],
 		
 		// The default path for the level file selection box
-		'levelPath': 'lib/devquest/levels/',
+		'levelPath': 'lib/game/levels/',
 		
 		// Whether to save levels as plain JSON or wrapped in a module. If
 		// you want to load levels asynchronously via AJAX, saving as plain
