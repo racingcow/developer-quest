@@ -178,7 +178,6 @@ module.exports = function(grunt) {
 		'leadingIndent:htmlFiles'
 	]);
 	grunt.registerTask('build', [
-		'checkStyle',
 		'cleanup',
 		'copy',
 		'cssmin',
